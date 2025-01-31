@@ -1,0 +1,37 @@
+.sidebar {
+    width: 250px;
+    background-color: #202123;
+    color: #f9f9f9;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* 화면 높이 꽉 채우기 */
+    position: fixed; /* 사이드바 고정 */
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.sidebar a:hover {
+    background-color: #f9e48e;
+    color: #202123;
+}
+
+.sideItemList {
+    text-decoration: none;
+    color: #f9f9f9;
+}
+
+.sidebarItem {
+    color: #f9f9f9;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebarItem.active {
+    background-color: #5a5a5a; /* 강조하는 느낌 */
+    color: #fff; /* 글자 색상 */
+}

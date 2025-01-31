@@ -1,0 +1,102 @@
+.notice {
+    margin-left: 250px; /* 사이드바가 차지하는 너비만큼 여백 추가 */
+    padding: 20px;
+    width: calc(100% - 250px); /* 나머지 공간을 content에 할당 */
+}
+
+.notice-list-container {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem; /* 추가 */
+    overflow-x: auto;
+    outline: 2px dashed red;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    outline: 2px dashed green;
+    width: 100%;
+    margin-bottom: 1rem; /* 추가 */
+}
+
+/* 페이지네이션 여백 수정 */
+.pagination {
+    margin-top: 1rem !important; /* !important 추가 */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* 글쓰기 버튼 컨테이너 스타일 */
+.write-button-container {
+    display: flex;
+    justify-content: flex-end;
+    height: 35px;
+    margin-top: 30px;
+}
+
+/* 글쓰기 버튼 스타일 */
+.write-button {
+    background-color: #202123;
+    color: #F9F9F9;
+    padding: 5px 20px;
+    border: black solid 1px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.write-button:hover {
+    background-color: #303133;
+}
+
+/* 공통 제목 스타일 */
+.apply-title {
+    font-size: 26px;
+}
+
+/* 모달 오버레이 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경 흐림 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 모달 콘텐츠 스타일 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}

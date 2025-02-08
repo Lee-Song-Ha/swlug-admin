@@ -1,13 +1,16 @@
 .notice {
-    margin-left: 250px; /* 사이드바가 차지하는 너비만큼 여백 추가 */
+    margin-left: 250px;
+    /* 사이드바가 차지하는 너비만큼 여백 추가 */
     padding: 20px;
-    width: calc(100% - 250px); /* 나머지 공간을 content에 할당 */
+    width: calc(100% - 250px);
+    /* 나머지 공간을 content에 할당 */
 }
 
 .notice-list-container {
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 1rem; /* 추가 */
+    margin-bottom: 1rem;
+    /* 추가 */
     overflow-x: auto;
     outline: 2px dashed red;
 }
@@ -17,12 +20,14 @@ table {
     border-collapse: collapse;
     outline: 2px dashed green;
     width: 100%;
-    margin-bottom: 1rem; /* 추가 */
+    margin-bottom: 1rem;
+    /* 추가 */
 }
 
 /* 페이지네이션 여백 수정 */
 .pagination {
-    margin-top: 1rem !important; /* !important 추가 */
+    margin-top: 1rem !important;
+    /* !important 추가 */
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -67,7 +72,8 @@ table {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 배경 흐림 */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 배경 흐림 */
     display: flex;
     justify-content: center;
     align-items: center;

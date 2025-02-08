@@ -1,21 +1,55 @@
 .users {
-    margin-left: 250px; /* 사이드바가 차지하는 너비만큼 여백 추가 */
+    margin-left: 250px;
+    /* 사이드바가 차지하는 너비만큼 여백 추가 */
     padding: 20px;
-    width: calc(100% - 250px); /* 나머지 공간을 content에 할당 */
+    width: calc(100% - 250px);
+    /* 나머지 공간을 content에 할당 */
 }
 
-.user-list-container {
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 1rem; /* 추가 */
-    overflow-x: auto;
-    outline: 2px dashed red;
+.title {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
 }
 
+.user-list {
+    background-color: white;
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* 검색바 스타일 */
 .search-bar {
-    width: 300px; /* 너비 증가 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    padding: 10px 0px;
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+}
 
+/* 검색 아이콘 스타일 */
+.search-icon {
+    font-size: 18px;
+    color: #888;
+    margin: 0px 10px;
+}
+
+/* 검색 입력 필드 스타일 */
+.search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    color: #555;
+}
+
+/* 플레이스홀더 스타일 */
+.search-bar input::placeholder {
+    color: #ccc;
 }
 
 table {
@@ -23,7 +57,8 @@ table {
     border-collapse: collapse;
     outline: 2px dashed green;
     width: 100%;
-    margin-bottom: 1rem; /* 추가 */
+    margin-bottom: 1rem;
+    /* 추가 */
 }
 
 thead th {
@@ -55,15 +90,24 @@ td {
     white-space: nowrap;
 }
 
-
-
-/* 페이지네이션 여백 수정 */
-.pagination {
-    margin-top: 1rem !important; /* !important 추가 */
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+.pagination button {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s ease-in-out;
 }
+
+.pagination button.active {
+    font-weight: bold;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+}
+
 
 /* 글쓰기 버튼 컨테이너 스타일 */
 .write-button-container {
@@ -96,4 +140,3 @@ td {
 .apply-title {
     font-size: 26px;
 }
-

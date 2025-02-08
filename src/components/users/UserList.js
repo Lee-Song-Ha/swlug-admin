@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../style/userlist.css"
 
 const UserList = ({ users }) => {
     // 모달 열림 상태 관리
@@ -26,24 +27,26 @@ const UserList = ({ users }) => {
     };
 
     return (
-        <div className="notice-list">
-            {/* 헤더 추가 */}
-            <div className="notice-header flex items-center justify-between py-3 border-b-2 border-black font-bold text-center">
-                <div className="flex-shrink-0 w-20">회원번호</div>
-                <div className="flex-grow text-center">아이디</div>
-                <div className="flex-shrink-0 w-64">닉네임</div>
-                <div className="flex-shrink-0 w-32">권한</div>
+        <div className="user-list-container">
+            {/* 테이블 헤더 */}
+            <div className="user-table-header">
+                <div className="table-cell">Type Number</div>
+                <div className="table-cell">User ID</div>
+                <div className="table-cell">Nickname</div>
+                <div className="table-cell">RoleType</div>
             </div>
+
+            {/* 사용자 목록 */}
             {users.map((user) => (
                 <div
                     key={user.typeNum}
-                    className="notice-item flex items-center justify-between py-3 border-b border-gray-300 hover:bg-gray-50 cursor-pointer"
-                    onClick={() => handleNoticeClick(user.typeNum)}
+                    className="user-table-row"
+                    onClick={() => handleNoticeClick(user)}
                 >
-                    <div className="flex-shrink-0 w-20 text-center">{user.typeNum}</div>
-                    <div className="flex-grow text-center truncate">{user.userId}</div>
-                    <div className="flex-shrink-0 w-64 text-center">{user.nickname}</div>
-                    <div className="flex-shrink-0 w-32 text-center">{user.roleType}</div>
+                    <div className="table-cell">{user.typeNum}</div>
+                    <div className="table-cell">{user.userId}</div>
+                    <div className="table-cell">{user.nickname}</div>
+                    <div className="table-cell">{user.roleType}</div>
                 </div>
             ))}
 

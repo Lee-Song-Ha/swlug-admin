@@ -1,0 +1,63 @@
+.user-list-container {
+    border-collapse: collapse;
+}
+
+/* 테이블 헤더 스타일 */
+.user-table-header {
+    display: flex;
+    background: #f4f4f4;
+    border-radius: 8px;
+}
+
+/* 개별 셀 스타일 */
+.table-cell {
+    flex: 1;
+    text-align: left;
+    padding: 10px 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 행 스타일 */
+.user-table-row {
+    display: flex;
+    cursor: pointer;
+}
+
+.user-table-row:hover {
+    background: #f0f0f0;
+}
+
+/* 모달 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-content button:hover {
+    background: #0056b3;
+}

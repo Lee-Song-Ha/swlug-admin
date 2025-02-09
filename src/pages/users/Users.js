@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../style/users.css";
 import UserList from "../../components/users/UserList";
+import Pagination from "../../components/Pagination";
 import { allUserPosts } from "../../service/userAPI";
 
 const Users = () => {
@@ -13,7 +14,6 @@ const Users = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const usersPerPage = 10; // 페이지당 표시할 유저 수
-    const pageGroupSize = 3; // 한 번에 보여줄 페이지 수
 
     const fetchUsers = async () => {
         try {
@@ -45,19 +45,6 @@ const Users = () => {
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
-
-    // 페이지 그룹 계산
-    const getPageNumbers = () => {
-        const currentGroup = Math.ceil(currentPage / pageGroupSize);
-        const startPage = (currentGroup - 1) * pageGroupSize + 1;
-        const endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
-
-        const pages = [];
-        for (let i = startPage; i <= endPage; i++) {
-            pages.push(i);
-        }
-        return pages;
-    };
 
     // 페이지 변경
     const handlePageChange = (pageNumber) => {
@@ -107,49 +94,11 @@ const Users = () => {
                     
                         {/* 페이지네이션 */}
                         {totalPages > 1 && (
-                            <div className="pagination flex justify-center space-x-2 text-gray-700 mt-5">
-                                <button
-                                    onClick={() => handlePageChange(1)}
-                                    disabled={currentPage === 1}
-                                    className={`text-base px-3 ${currentPage === 1 ? "text-gray-400 cursor-not-allowed" : "hover:text-black"}`}
-                                >
-                                    &lt;&lt;
-                                </button>
-                                <button
-                                    onClick={() => handlePageChange(currentPage - 1)}
-                                    disabled={currentPage === 1}
-                                    className={`text-base px-3 ${currentPage === 1 ? "text-gray-400 cursor-not-allowed" : "hover:text-black"}`}
-                                >
-                                    &lt;
-                                </button>
-
-                                {getPageNumbers().map((pageNum) => (
-                                    <button
-                                        key={pageNum}
-                                        onClick={() => handlePageChange(pageNum)}
-                                        className={`text-base px-3 ${
-                                            currentPage === pageNum ? "font-bold text-black" : "hover:text-black"
-                                        }`}
-                                    >
-                                        {pageNum}
-                                    </button>
-                                ))}
-
-                                <button
-                                    onClick={() => handlePageChange(currentPage + 1)}
-                                    disabled={currentPage === totalPages}
-                                    className={`text-base px-3 ${currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : "hover:text-black"}`}
-                                >
-                                    &gt;
-                                </button>
-                                <button
-                                    onClick={() => handlePageChange(totalPages)}
-                                    disabled={currentPage === totalPages}
-                                    className={`text-base px-3 ${currentPage === totalPages ? "text-gray-400 cursor-not-allowed" : "hover:text-black"}`}
-                                >
-                                    &gt;&gt;
-                                </button>
-                            </div>
+                            <Pagination 
+                                currentPage={currentPage} 
+                                totalPages={totalPages} 
+                                onPageChange={setCurrentPage} 
+                            />
                         )}
                     </div>
                 </>

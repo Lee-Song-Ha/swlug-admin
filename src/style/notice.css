@@ -24,15 +24,6 @@ table {
     /* 추가 */
 }
 
-/* 페이지네이션 여백 수정 */
-.pagination {
-    margin-top: 1rem !important;
-    /* !important 추가 */
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
 /* 글쓰기 버튼 컨테이너 스타일 */
 .write-button-container {
     display: flex;

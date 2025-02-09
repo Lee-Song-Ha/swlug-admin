@@ -83,24 +83,6 @@ table {
     /* 추가 */
 }
 
-.pagination button {
-    background: none;
-    border: none;
-    padding: 8px 12px;
-    margin: 0 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.2s ease-in-out;
-}
-
-.pagination button.active {
-    font-weight: bold;
-}
-
-.pagination button:disabled {
-    cursor: not-allowed;
-}
-
 /* 닫기 버튼 */
 .close-modal {
     background: none;

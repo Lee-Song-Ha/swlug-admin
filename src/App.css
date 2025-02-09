@@ -49,3 +49,14 @@
   width: calc(100% - 250px);
   /* 나머지 공간을 content에 할당 */
 }
+
+/* 전역 폰트 설정 */
+* {
+  font-family: 'Pretendard-Regular';
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-style: normal;
+}

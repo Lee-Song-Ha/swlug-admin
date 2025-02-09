@@ -35,7 +35,7 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
 
     // 입력값 변경 핸들러
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData({ ...formData, [e.target.nickname]: e.target.value });
     };
 
     // 비밀번호 표시/숨기기 토글
@@ -60,7 +60,7 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
     // 회원 추가 API 호출
     const addUser = async () => {
         try {
-            await axios.post("/users/create", formData);
+            await axios.post("/api/admin/users/create", formData);
             alert("회원이 추가되었습니다.");
             fetchUsers(); // 새로고침
             closeModal();
@@ -73,7 +73,7 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
     // 회원 수정 API 호출
     const editUser = async () => {
         try {
-            await axios.post("/users/mode", formData);
+            await axios.post("/api/admin/users/mode", formData);
             alert("회원 정보가 수정되었습니다.");
             fetchUsers();
             closeModal();
@@ -88,7 +88,7 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
         if (!window.confirm("정말 삭제하시겠습니까?")) return;
 
         try {
-            await axios.post("/users/delete", { userId });
+            await axios.post("/api/admin/users/delete", { userId });
             alert("회원이 삭제되었습니다.");
             fetchUsers();
         } catch (error) {

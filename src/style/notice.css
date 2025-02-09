@@ -9,10 +9,51 @@
 .notice-list-container {
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 1rem;
-    /* 추가 */
-    overflow-x: auto;
-    outline: 2px dashed red;
+}
+
+/* 공지사항 리스트 */
+.notice-list-wrapper {
+    display: flex;
+    justify-content: center;
+    /* 검색창과 같은 위치로 중앙 정렬 */
+    width: 100%;
+}
+
+/* 검색바 컨테이너 (오른쪽 정렬) */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    /* 중앙 정렬 */
+    width: 100%;
+}
+
+/* 검색바 스타일 */
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 15px;
+    width: 50%;
+    height: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+/* 검색 아이콘 스타일 */
+.search-icon {
+    font-size: 18px;
+    margin: 0px 10px;
+}
+
+/* 검색 입력 필드 스타일 */
+.search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    color: #555;
 }
 
 table {
@@ -54,4 +95,17 @@ table {
 /* 공통 제목 스타일 */
 .apply-title {
     font-size: 26px;
+}
+
+.add-notice-button {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.add-notice-button:hover {
+    background-color: #bbdefb;
 }

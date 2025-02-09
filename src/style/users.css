@@ -20,29 +20,27 @@
 
 .search-bar-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    width: 65%;
-    margin: 20px auto;
+    justify-content: flex-end;
+    /* 오른쪽 정렬 */
+    margin-bottom: 20px;
+    margin: auto;
 }
 
 /* 검색바 스타일 */
 .search-bar {
     display: flex;
     align-items: center;
-    border-radius: 8px;
-    background-color: white;
-    padding: 10px 0px;
-    width: 90%;
-    margin: 20px auto;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 15px;
+    width: 300px;
+    height: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* 검색 아이콘 스타일 */
 .search-icon {
     font-size: 18px;
-    color: #888;
     margin: 0px 10px;
 }
 
@@ -66,7 +64,7 @@
     color: #1976d2;
     border: none;
     padding: 8px 15px;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
 }
 

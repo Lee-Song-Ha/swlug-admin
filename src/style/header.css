@@ -1,0 +1,36 @@
+/* 헤더 기본 스타일 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* 왼쪽 로고 */
+.header-left .logo {
+    height: 40px;
+    /* 로고 크기 조절 */
+    margin-left: 20px;
+}
+
+/* 오른쪽 로그아웃 버튼 */
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.logout-button {
+    color: black;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}

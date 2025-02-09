@@ -1,0 +1,92 @@
+/* 모달 오버레이 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 배경 흐림 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 모달 헤더 */
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 모달 제목 */
+.modal-title {
+    font-size: 18px;
+}
+
+/* 모달 콘텐츠 스타일 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin: 0;
+}
+
+/* 입력 필드 스타일 */
+.modal-input {
+    width: 95%;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-size: 14px;
+}
+
+.modal-input:focus {
+    background-color: #F0F8FF;
+    border-color: #4A90E2;
+    outline: none;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    /* 버튼을 오른쪽 정렬 */
+    gap: 10px;
+}
+
+.modal-button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.modal-cancel {
+    background: #f1f3f5;
+    color: #333;
+}
+
+.modal-cancel:hover {
+    background: #e0e0e0;
+}
+
+.modal-accept {
+    background: #007bff;
+    color: white;
+}
+
+.modal-accept:hover {
+    background: #0056b3;
+}

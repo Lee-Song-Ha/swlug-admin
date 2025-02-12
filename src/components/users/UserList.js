@@ -111,11 +111,11 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
             {/* 사용자 목록 */}
             {users.map((user) => (
                 <div
-                    key={user.typeNum}
+                    key={user.userInfoNum}
                     className="user-table-row"
                     onClick={() => handleNoticeClick(user)}
                 >
-                    <div className="table-cell">{user.typeNum}</div>
+                    <div className="table-cell">{user.userInfoNum}</div>
                     <div className="table-cell">{user.userId}</div>
                     <div className="table-cell">{user.nickname}</div>
                     <div className="table-cell">{user.roleType}</div>

@@ -18,7 +18,7 @@
 /* 테이블 헤더 */
 .user-table-header {
     display: grid;
-    grid-template-columns: 120px minmax(0, 2.5fr) 200px 120px 120px;
+    grid-template-columns: 120px minmax(0, 2.5fr) 240px 120px 140px;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
@@ -37,7 +37,7 @@
 /* 테이블 행 */
 .user-table-row {
     display: grid;
-    grid-template-columns: 120px minmax(0, 2.5fr) 200px 120px 120px;
+    grid-template-columns: 120px minmax(0, 2.5fr) 240px 120px 140px;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
@@ -78,6 +78,7 @@
 
 .user-edit {
     color: #4A90E2;
+    margin-right: 10px;
 }
 
 .user-delete {

@@ -3,6 +3,7 @@ import BoardList from "../../components/board/BoardList";
 import Pagination from "../../components/Pagination";
 import { getAllBoards } from "../../service/boardAPI";
 import "../../style/notice.css";
+import WriteComponent from "../../components/board/WriteComponent";
 
 function Notices() {
     {/* 임시데이터 사용*/}
@@ -31,7 +32,7 @@ function Notices() {
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedBoard, setSelectedBoard] = useState(null);
 
     const noticesPerPage = 10;
 
@@ -73,10 +74,37 @@ function Notices() {
         }
     };
 
+    // 게시글 클릭 핸들러 (BoardList에서 호출할 함수)
+    const handleBoardClick = (board) => {
+        setSelectedBoard(board);
+        // 게시글을 선택할 때 히스토리에 새 엔트리 추가
+        window.history.pushState({ boardSelected: true }, "");
+    };
+
+    // popstate 이벤트 리스너: 브라우저 뒤로 가기 시 selectedBoard를 null로 설정
+    useEffect(() => {
+        const handlePopState = () => {
+            setSelectedBoard(null);
+        };
+        window.addEventListener("popstate", handlePopState);
+        return () => window.removeEventListener("popstate", handlePopState);
+    }, []);
+
     return (
         <div className="notice">
             <h3 className="title">공지사항 관리</h3>
-
+            <hr className="title-line" />
+            {selectedBoard ? (
+                // 게시글이 선택된 경우: 검색창/페이지네이션 숨김
+                <div>                    
+                    <WriteComponent 
+                    postToEdit={selectedBoard} 
+                    fetchBoards={() => {}} 
+                    onCancel={() => setSelectedBoard(null)}
+                    />
+                </div>
+            ) : (
+                <>
             {/* 검색 & 공지사항 추가 */}                
             <div className="search-bar-container">
                 <div className="search-bar">
@@ -88,7 +116,7 @@ function Notices() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                 </div>
-                <button className="add-notice-button" onClick={() => setIsModalOpen(true)}>
+                <button className="add-notice-button" onClick={() => setSelectedBoard(true)}>
                 공지사항 추가
                 </button>
             </div>
@@ -107,15 +135,13 @@ function Notices() {
                         {/*<BoardList 
                                 boards={currentNotices} 
                                 fetchBoards={fetchNotices}
-                                isModalOpen={isModalOpen}
-                                setIsModalOpen={setIsModalOpen} />*/}
+                                setSelectedBoard={handleBoardClick} />*/}
 
                         {/* 임시데이터 사용*/}        
                         <BoardList 
                             boards={currentNotices} 
                             fetchBoards={() => {}}  // 백엔드 호출 없이 빈 함수 전달
-                            isModalOpen={isModalOpen}
-                            setIsModalOpen={setIsModalOpen}
+                            setSelectedBoard={handleBoardClick}
                         />
 
                         
@@ -134,7 +160,8 @@ function Notices() {
                     등록된 공지사항이 없습니다.
                 </div>
             )}
-
+            </>
+            )}
         </div>
     );
 }

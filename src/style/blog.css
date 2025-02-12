@@ -1,5 +1,29 @@
 .blog {
-    margin-left: 250px; /* 사이드바가 차지하는 너비만큼 여백 추가 */
-    padding: 20px;
-    width: calc(100% - 250px); /* 나머지 공간을 content에 할당 */
+    margin: 30px 30px 30px 280px;
+    width: calc(100% - 250px);
+    /* 나머지 공간을 content에 할당 */
+    border: 1px solid #f1f3f5;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 30px;
+    /* 버튼 크기를 키움 */
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: #333;
+}
+
+.title-line {
+    width: 90%;
+    margin: 30px auto;
 }

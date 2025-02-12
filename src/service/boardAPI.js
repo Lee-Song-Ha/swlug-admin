@@ -13,7 +13,7 @@ export const getAllBoards = async () => {
 // 게시물 추가 (공지사항 & 블로그 공통)
 export const createBoard = async (boardData) => {
     try {
-        await axios.post(`/api/admin/board/create`, boardData);
+        await axios.post(`/api/admin/boards/create`, boardData);
     } catch (error) {
         throw new Error("게시물 추가 실패: " + error.message);
     }

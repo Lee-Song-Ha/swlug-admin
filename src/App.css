@@ -42,24 +42,13 @@
   display: flex;
   margin-top: 60px;
   /* 헤더 높이만큼 여백 추가 */
-  height: calc(100vh - 60px);
-  /* 전체 높이에서 헤더 높이 빼기 */
-}
-
-/* 사이드바 스타일 */
-.sidebar {
-  margin-top: 60px;
-  width: 250px;
-  height: 100%;
-  background-color: #f4f4f4;
-  padding: 20px;
+  background: #f1f3f5;
 }
 
 /* 콘텐츠 스타일 */
 .contents {
   flex-grow: 1;
   padding: 20px;
-  background-color: #fff;
 }
 
 /* 전역 폰트 설정 */

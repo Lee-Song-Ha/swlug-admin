@@ -25,33 +25,26 @@ function Login() {
     setError(""); // 기존 오류 초기화
 
     try {
-      const response = await axios.post("/api/login", {
-        userId: id,
-        password: password,
-      });
+        const response = await axios.post("/api/login", {
+            userId: id,
+            password: password,
+        });
 
-      if (response.data.success) {
-        // 로그인 성공 시 로컬 스토리지에 저장
-        localStorage.setItem("userId", response.data.userId);
-        localStorage.setItem("roleType", response.data.roleType); // roleType 저장
-
-        // 관리자 페이지 이동 (roleType 체크 가능)
-        if (response.data.roleType === "1") {
-          navigate("/", { replace: true });
+        if (response.data.success) {
+            // 로그인 성공 시 로그인 상태 저장
+            localStorage.setItem("userId", response.data.userId);
+            // 로그인 성공 시 메인 페이지로 이동
+            navigate("/", { replace: true });
+            window.scrollTo(0, 0);
         } else {
-          navigate("/error", { replace: true });
+            setError(response.data.message);
         }
-
-        window.scrollTo(0, 0);
-      } else {
-        setError(response.data.message);
-      }
     } catch (error) {
-      setError(error.response?.data?.message || "로그인에 실패했습니다.");
+        setError(error.response?.data?.message || "로그인에 실패했습니다.");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
   return (
     <div className="login-container">

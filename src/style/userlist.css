@@ -6,6 +6,7 @@
     margin: 40px auto;
     width: 90%;
     max-width: 1000px;
+    overflow-x: auto;
 }
 
 /* 테이블 스타일 */
@@ -18,7 +19,7 @@
 /* 테이블 헤더 */
 .user-table-header {
     display: grid;
-    grid-template-columns: 120px minmax(0, 2.5fr) 200px 120px 120px;
+    grid-template-columns: 120px minmax(0, 2.5fr) 240px 120px 140px;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
@@ -37,7 +38,7 @@
 /* 테이블 행 */
 .user-table-row {
     display: grid;
-    grid-template-columns: 120px minmax(0, 2.5fr) 200px 120px 120px;
+    grid-template-columns: 120px minmax(0, 2.5fr) 240px 120px 140px;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
@@ -78,6 +79,7 @@
 
 .user-edit {
     color: #4A90E2;
+    margin-right: 10px;
 }
 
 .user-delete {
@@ -87,4 +89,58 @@
 .user-edit:hover,
 .user-delete:hover {
     transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+
+    .user-table-header,
+    .user-table-row {
+        grid-template-columns: 100px minmax(0, 2fr) 180px 100px 120px;
+        padding: 10px;
+    }
+
+    .user-list-container {
+        max-width: 95%;
+    }
+}
+
+/* 모바일 크기 (480px ~ 768px) */
+@media (max-width: 768px) {
+
+    .user-table-header,
+    .user-table-row {
+        grid-template-columns: 80px minmax(0, 1.5fr) 150px 80px;
+        padding: 8px;
+    }
+
+    /* 액션 버튼 숨기기 */
+    .user-table-header .actions-cell,
+    .user-table-row .actions-cell {
+        display: none;
+    }
+
+    .user-list-container {
+        max-width: 90%;
+    }
+}
+
+/* 아주 작은 모바일 (480px 이하) */
+@media (max-width: 480px) {
+
+    .user-table-header,
+    .user-table-row {
+        grid-template-columns: 1fr;
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .user-table-header {
+        font-size: 14px;
+    }
+
+    .user-table-row {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
 }

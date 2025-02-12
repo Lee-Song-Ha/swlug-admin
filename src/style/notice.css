@@ -1,9 +1,11 @@
 .notice {
-    margin-left: 250px;
-    /* 사이드바가 차지하는 너비만큼 여백 추가 */
-    padding: 20px;
+    margin: 30px 30px 30px 280px;
     width: calc(100% - 250px);
     /* 나머지 공간을 content에 할당 */
+    border: 1px solid #f1f3f5;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .notice-list-container {
@@ -25,6 +27,7 @@
     justify-content: center;
     /* 중앙 정렬 */
     width: 100%;
+    gap: 10px;
 }
 
 /* 검색바 스타일 */
@@ -32,11 +35,10 @@
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 25px;
+    border-radius: 10px;
     padding: 5px 15px;
     width: 50%;
-    height: 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 50px;
     margin-right: 20px;
 }
 
@@ -56,40 +58,18 @@
     color: #555;
 }
 
-table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    outline: 2px dashed green;
-    width: 100%;
-    margin-bottom: 1rem;
-    /* 추가 */
+/* 플레이스홀더 스타일 */
+.search-bar input::placeholder {
+    color: #ccc;
 }
 
-/* 글쓰기 버튼 컨테이너 스타일 */
-.write-button-container {
-    display: flex;
-    justify-content: flex-end;
-    height: 35px;
-    margin-top: 30px;
-}
-
-/* 글쓰기 버튼 스타일 */
-.write-button {
-    background-color: #202123;
-    color: #F9F9F9;
-    padding: 5px 20px;
-    border: black solid 1px;
+.category-filter {
+    min-width: 100px;
+    padding: 8px;
     border-radius: 10px;
-    font-size: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
     cursor: pointer;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.2s ease;
-}
-
-.write-button:hover {
-    background-color: #303133;
 }
 
 /* 공통 제목 스타일 */
@@ -102,7 +82,7 @@ table {
     color: #1976d2;
     border: none;
     padding: 8px 15px;
-    border-radius: 15px;
+    border-radius: 10px;
     cursor: pointer;
 }
 

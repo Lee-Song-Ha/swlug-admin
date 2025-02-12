@@ -5,11 +5,14 @@
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-    height: 100%; /* 화면 높이 꽉 채우기 */
-    position: fixed; /* 사이드바 고정 */
+    height: 100%;
+    /* 화면 높이 꽉 채우기 */
+    position: fixed;
+    /* 사이드바 고정 */
     top: 0;
     left: 0;
     box-sizing: border-box;
+    margin-top: 60px;
 }
 
 .sidebar a:hover {
@@ -22,16 +25,20 @@
     color: #f9f9f9;
 }
 
-.sidebarItem {
+.sidebar-item {
     color: #f9f9f9;
     text-decoration: none;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border-radius: 5px;
+    padding: 15px 20px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebarItem.active {
-    background-color: #5a5a5a; /* 강조하는 느낌 */
-    color: #fff; /* 글자 색상 */
+.sidebar-item.active {
+    background-color: #5a5a5a;
+    /* 강조하는 느낌 */
+    color: #fff;
+    /* 글자 색상 */
+}
+
+.sidebar-item p {
+    font-size: 18px;
 }

@@ -57,7 +57,7 @@ const Users = () => {
     return (
         <div className="users">
             <h3 className="title">회원 관리</h3>
-
+            <hr className="title-line" />
             {/* 검색 기능 및 회원 추가 버튼 */}
             <div className="search-bar-container">
                 <div className="search-bar">

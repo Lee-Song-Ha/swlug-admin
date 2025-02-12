@@ -1,30 +1,27 @@
-.board-list {
-    background-color: white;
-    width: 80%;
-    margin: 20px auto;
-}
-
-/* 테이블 컨테이너 */
 .board-list-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px auto;
     width: 90%;
-    max-width: 1000px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
-/* 테이블 스타일 */
-.board-list-table {
+.board-list {
+    background-color: white;
     width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+    max-width: 900px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* 테이블 헤더 */
 .board-table-header {
     display: grid;
-    grid-template-columns: 120px minmax(0, 2.5fr) 200px 120px 120px;
+    grid-template-columns: 120px minmax(0, 2.5fr) 240px 120px 140px;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
@@ -34,30 +31,16 @@
     font-weight: bold;
 }
 
-/* 헤더 셀 */
-.board-table-header th {
-    padding: 12px 20px;
-    text-align: center;
-}
-
 /* 테이블 행 */
 .board-table-row {
     display: grid;
-    grid-template-columns: 120px minmax(0, 2.5fr) 200px 120px 120px;
+    grid-template-columns: 120px minmax(0, 2.5fr) 240px 120px 140px;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
     width: 100%;
     background-color: white;
     transition: background-color 0.2s;
-}
-
-/* 각 셀 스타일 */
-.board-table-row td {
-    padding: 12px 20px;
-    text-align: center;
-    vertical-align: middle;
-    /* 수직 정렬 */
 }
 
 /* 마우스 오버 효과 */
@@ -84,6 +67,7 @@
 
 .board-edit {
     color: #4A90E2;
+    margin-right: 10px;
 }
 
 .board-delete {
@@ -93,4 +77,55 @@
 .board-edit:hover,
 .board-delete:hover {
     transform: scale(1.1);
+}
+
+/* 반응형 디자인 적용 (화면이 작아질 때) */
+@media (max-width: 1024px) {
+
+    .board-table-header,
+    .board-table-row {
+        grid-template-columns: 100px minmax(0, 2fr) 180px 100px 120px;
+        padding: 10px;
+    }
+
+    .board-list {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .board-table-header,
+    .board-table-row {
+        grid-template-columns: 80px minmax(0, 1.5fr) 150px 80px;
+        padding: 8px;
+    }
+
+    .board-table-header .actions-cell,
+    .board-table-row .actions-cell {
+        display: none;
+    }
+
+    .board-list {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .board-table-header,
+    .board-table-row {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .board-table-header {
+        font-size: 14px;
+    }
+
+    .board-table-row {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
 }

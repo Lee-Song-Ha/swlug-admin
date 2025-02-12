@@ -35,7 +35,7 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
 
     // 입력값 변경 핸들러
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.nickname]: e.target.value });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     // 비밀번호 표시/숨기기 토글
@@ -47,8 +47,15 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedUser(null);
-    };
-
+        setFormData({   // 모달 닫을 때 초기화
+            userId: "",
+            pw: "",
+            nickname: "",
+            email: "",
+            phone: "",
+            roleType: "",
+        });
+    };    
     // 모달 외부 클릭 시 모달 닫기
     const handleOverlayClick = (e) => {
         // 클릭된 영역이 모달 콘텐츠가 아니면 모달을 닫습니다.
@@ -111,11 +118,11 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
             {/* 사용자 목록 */}
             {users.map((user) => (
                 <div
-                    key={user.typeNum}
+                    key={user.userInfoNum}
                     className="user-table-row"
                     onClick={() => handleNoticeClick(user)}
                 >
-                    <div className="table-cell">{user.typeNum}</div>
+                    <div className="table-cell">{user.userInfoNum}</div>
                     <div className="table-cell">{user.userId}</div>
                     <div className="table-cell">{user.nickname}</div>
                     <div className="table-cell">{user.roleType}</div>
@@ -141,68 +148,81 @@ const UserList = ({ users, fetchUsers, isModalOpen, setIsModalOpen }) => {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h2 className="modal-title">{selectedUser ? "회원 수정" : "회원 추가"}</h2>
-                            <button className="close-modal" onClick={closeModal}>✖</button>
                         </div>
 
-                        <input
-                            type="text"
-                            name="userId"
-                            placeholder="User ID"
-                            className="modal-input"
-                            value={formData.userId}
-                            onChange={handleChange}
-                            disabled={!!selectedUser}
-                        />
+                        {/* 입력 필드 */}
+                        <div className="input-group">
+                            <label className="input-label">User ID</label>
+                            <input
+                                type="text"
+                                name="userId"
+                                className="modal-input"
+                                value={formData.userId}
+                                onChange={handleChange}
+                            />
+                        </div>
 
                         {!selectedUser && (
-                            <div className="input-container">
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="pw"
-                                    placeholder="Password"
-                                    className="modal-input"
-                                    value={formData.pw}
-                                    onChange={handleChange}
-                                />
-                                <span className="password-toggle" onClick={togglePasswordVisibility}>
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                </span>
+                            <div className="input-group">
+                                <label className="input-label">Password</label>
+                                <div className="password-container">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        name="pw"
+                                        placeholder="Password"
+                                        className="modal-input"
+                                        value={formData.pw}
+                                        onChange={handleChange}
+                                    />
+                                    <span className="password-toggle" onClick={togglePasswordVisibility}>
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
+                                </div>
                             </div>
                         )}
+                        <div className="input-group">
+                            <label className="input-label">Nickname</label>
+                            <input
+                                type="text"
+                                name="nickname"
+                                className="modal-input"
+                                value={formData.nickname}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                        <input
-                            type="text"
-                            name="nickname"
-                            placeholder="Nickname"
-                            className="modal-input"
-                            value={formData.nickname}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            className="modal-input"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="text"
-                            name="phone"
-                            placeholder="Phone"
-                            className="modal-input"
-                            value={formData.phone}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="text"
-                            name="roleType"
-                            placeholder="RoleType"
-                            className="modal-input"
-                            value={formData.roleType}
-                            onChange={handleChange}
-                        />
+                        <div className="input-group">
+                            <label className="input-label">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="modal-input"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>
 
+                        <div className="input-group">
+                            <label className="input-label">Phone</label>
+                            <input
+                                type="text"
+                                name="phone"
+                                className="modal-input"
+                                value={formData.phone}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label className="input-label">Role</label>
+                            <input
+                                type="text"
+                                name="roleType"
+                                className="modal-input"
+                                value={formData.roleType}
+                                onChange={handleChange}
+                            />
+                        </div>
                         <div className="modal-buttons">
                             <button className="modal-cancel modal-button" onClick={closeModal}>
                                 Cancel

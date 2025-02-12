@@ -4,13 +4,15 @@
     align-items: center;
     width: 90%;
     max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .board-list {
     background-color: white;
-    width: 80%;
+    width: 100%;
+    max-width: 900px;
     margin: 20px auto;
-    /* 가로 중앙 정렬 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,4 +77,55 @@
 .board-edit:hover,
 .board-delete:hover {
     transform: scale(1.1);
+}
+
+/* 반응형 디자인 적용 (화면이 작아질 때) */
+@media (max-width: 1024px) {
+
+    .board-table-header,
+    .board-table-row {
+        grid-template-columns: 100px minmax(0, 2fr) 180px 100px 120px;
+        padding: 10px;
+    }
+
+    .board-list {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .board-table-header,
+    .board-table-row {
+        grid-template-columns: 80px minmax(0, 1.5fr) 150px 80px;
+        padding: 8px;
+    }
+
+    .board-table-header .actions-cell,
+    .board-table-row .actions-cell {
+        display: none;
+    }
+
+    .board-list {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .board-table-header,
+    .board-table-row {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .board-table-header {
+        font-size: 14px;
+    }
+
+    .board-table-row {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
 }

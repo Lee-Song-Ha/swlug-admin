@@ -6,7 +6,7 @@ import { FaEdit, FaTrash } from "react-icons/fa"; // 아이콘 추가
 const BoardList = ({ boards, fetchBoards, setSelectedBoard }) => {
 
     const handleBoardClick = (board) => {
-        console.log("게시물 클릭됨:", board);
+        console.log("선택된 게시글 데이터:", board);
         setSelectedBoard(board);
     };
 
@@ -39,8 +39,8 @@ const BoardList = ({ boards, fetchBoards, setSelectedBoard }) => {
                     className="board-table-row"
                     onClick={() => handleBoardClick(board)}  
                 >
-                    <div className="table-cell">{board.category}</div>
-                    <div className="table-cell">{board.title}</div>
+                    <div className="table-cell">{board.boardCategory}</div>
+                    <div className="table-cell">{board.boardTitle}</div>
                     <div className="table-cell">{board.nickname}</div>
                     <div className="table-cell">{board.createAt}</div>
                     <div className="table-cell">

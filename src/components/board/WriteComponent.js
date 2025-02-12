@@ -11,30 +11,30 @@ const WriteComponent = ({ onCancel, postToEdit, fetchBoards }) => {
     const [post, setPost] = useState(null);
     
     const [id, setId] = useState(postToEdit?.id || null);
-    const [title, setTitle] = useState(_postToEdit?.title || "");
+    const [boardTitle, setBoardTitle] = useState(_postToEdit?.boardTitle || "");
     const [nickname, setNickname] = useState(_postToEdit?.nickname || "");
     const [createdAt, setCreatedAt] = useState(_postToEdit?.createdAt || "");
-    const [tags, setTags] = useState(_postToEdit?.tags || []);
+    const [tag, setTag] = useState(_postToEdit?.tag || []);
     const [image, setImage] = useState(_postToEdit?.image || null);
-    const [contents, setContent] = useState(_postToEdit?.contents || "");
+    const [boardContents, setBoardContents] = useState(_postToEdit?.boardContents || "");
 
     const MAX_TAGS = 10;
 
     // boardType을 location 정보에 기반하여 계산 (공지사항과 블로그를 구분)
-  const boardType = useMemo(() => {
-    if (location.state?.boardType) {
-      return location.state.boardType;
-    }
-    if (location.pathname.includes("/notices")) {
-      return "notice";
-    } else if (location.pathname.includes("/blogs")) {
-      return "blog";
-    }
-    return "";
-  }, [location.pathname, location.state?.boardType]);
+    const boardType = useMemo(() => {
+        if (location.state?.boardType) {
+        return location.state.boardType;
+        }
+        if (location.pathname.includes("/notices")) {
+        return "notice";
+        } else if (location.pathname.includes("/blogs")) {
+        return "blog";
+        }
+        return "";
+    }, [location.pathname, location.state?.boardType]);
 
   // 카테고리 state (게시판 수정 시 기존 값 사용)
-  const [category, setCategory] = useState(_postToEdit?.category || "");
+  const [boardCategory, setBoardCategory] = useState(_postToEdit?.boardCategory || "");
 
     // boardType에 따라 선택 가능한 카테고리 옵션을 useMemo로 계산
     const boardOptions = useMemo(() => {
@@ -67,18 +67,18 @@ const WriteComponent = ({ onCancel, postToEdit, fetchBoards }) => {
         if ((e.key === 'Enter' || e.key === ',') && e.target.value.trim() !== '') {
             e.preventDefault();
             const newTag = e.target.value.trim();
-            if (tags.length >= MAX_TAGS) {
+            if (tag.length >= MAX_TAGS) {
                 return;
             }
-            if (!tags.includes(newTag)) {
-                setTags((prevTags) => [...prevTags, newTag]);
+            if (!tag.includes(newTag)) {
+                setTag((prevTags) => [...prevTags, newTag]);
             }
             e.target.value = '';
         }
     };
 
     const handleTagRemove = (tagToRemove) => {
-        setTags((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
+        setTag((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
     };
 
     const handleSubmit = async () => {
@@ -86,25 +86,24 @@ const WriteComponent = ({ onCancel, postToEdit, fetchBoards }) => {
             alert("게시판 유형을 선택해주세요.");
             return;
           }
-          if (!title || !contents) {
+          if (!boardTitle || !boardContents) {
             alert("제목과 내용을 입력해주세요.");
             return;
           }
-          if (boardType === "blogs" && !category) {
+          if (boardType === "blogs" && !boardCategory) {
             alert("블로그 게시물의 카테고리를 선택해주세요.");
             return;
           }
         try {
             const postData = {
-                boardType,
                 id,
-                category,
-                title,
+                boardCategory,
+                boardTitle,
                 nickname,
                 createdAt,
-                tags,
+                tag,
                 image,
-                contents,
+                boardContents,
             };
 
             if (postToEdit) {
@@ -114,6 +113,7 @@ const WriteComponent = ({ onCancel, postToEdit, fetchBoards }) => {
                 await createBoard(postData);
                 alert('게시물이 등록되었습니다.');
             }
+            fetchBoards(); // 등록 또는 수정 후 목록 갱신
         } catch (error) {
             console.error('글 등록/수정 실패:', error);
             alert('글 등록/수정에 실패했습니다. 다시 시도해주세요.');
@@ -125,8 +125,8 @@ const WriteComponent = ({ onCancel, postToEdit, fetchBoards }) => {
             {/* boardType에 따라 카테고리 선택 렌더링 */}
             {boardType === "blog" && (
                 <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={boardCategory}
+                onChange={(e) => setBoardCategory(e.target.value)}
                 className="category-select"
                 >
                 {boardOptions}
@@ -141,23 +141,23 @@ const WriteComponent = ({ onCancel, postToEdit, fetchBoards }) => {
             <input
                 type="text"
                 placeholder="제목을 입력하세요"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={boardTitle}
+                onChange={(e) => setBoardTitle(e.target.value)}
                 className="title-input"
             />
 
-            <CKEditorComponent contents={contents} setContent={setContent} />
+            <CKEditorComponent boardContents={boardContents} setBoardContents={setBoardContents} />
 
             <div className="tag-input">
                 <div className="tag-list">
-                    {tags.map((tag, index) => (
+                    {tag.map((tag, index) => (
                         <span key={index} className="tag">
                             #{tag}
                             <button className="remove-tag-button" onClick={() => handleTagRemove(tag)}>×</button>
                         </span>
                     ))}
-                    {tags.length < MAX_TAGS && (
-                        <input type="text" placeholder="#태그 입력" onKeyDown={handleTagInput} />
+                    {tag.length < MAX_TAGS && (
+                        <input type="text" placeholder="#태그 입력" onKeyDown={handleTagInput} className="tag-input-field" />
                     )}
                 </div>
             </div>

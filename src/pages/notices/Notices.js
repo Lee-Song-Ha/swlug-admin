@@ -8,24 +8,24 @@ import WriteComponent from "../../components/board/WriteComponent";
 function Notices() {
     {/* 임시데이터 사용*/}
     const [notices, setNotices] = useState([
-            { id: 1, category: 0, title: "공지 글 1", nickname: "관리자", createAt: "2024-02-09" },
-            { id: 2, category: 0, title: "공지 글 2", nickname: "사용자1", createAt: "2024-02-08" },
-            { id: 3, category: 0, title: "공지 글 3", nickname: "사용자2", createAt: "2024-02-07" },
-            { id: 4, category: 0, title: "공지 글 4", nickname: "사용자3", createAt: "2024-02-06" },
-            { id: 5, category: 0, title: "공지 글 5", nickname: "관리자", createAt: "2024-02-05" },
-            { id: 6, category: 0, title: "공지 글 6", nickname: "사용자4", createAt: "2024-02-04" },
-            { id: 7, category: 0, title: "공지 글 1", nickname: "관리자", createAt: "2024-02-09" },
-            { id: 8, category: 0, title: "공지 글 2", nickname: "사용자1", createAt: "2024-02-08" },
-            { id: 9, category: 0, title: "공지 글 3", nickname: "사용자2", createAt: "2024-02-07" },
-            { id: 10, category: 0, title: "공지 글 4", nickname: "사용자3", createAt: "2024-02-06" },
-            { id: 11, category: 0, title: "공지 글 5", nickname: "관리자", createAt: "2024-02-05" },
-            { id: 12, category: 0, title: "공지 글 6", nickname: "사용자4", createAt: "2024-02-04" },
-            { id: 13, category: 0, title: "공지 글 1", nickname: "관리자", createAt: "2024-02-09" },
-            { id: 14, category: 0, title: "공지 글 2", nickname: "사용자1", createAt: "2024-02-08" },
-            { id: 15, category: 0, title: "공지 글 3", nickname: "사용자2", createAt: "2024-02-07" },
-            { id: 16, category: 0, title: "공지 글 4", nickname: "사용자3", createAt: "2024-02-06" },
-            { id: 17, category: 0, title: "공지 글 5", nickname: "관리자", createAt: "2024-02-05" },
-            { id: 18, category: 0, title: "공지 글 6", nickname: "사용자4", createAt: "2024-02-04" },
+            { id: 1, boardCategory : 0, boardTitle: "공지 글 1", nickname: "관리자", createAt: "2024-02-09", boardContents: "hihi" },
+            { id: 2, boardCategory : 0, boardTitle: "공지 글 2", nickname: "사용자1", createAt: "2024-02-08" },
+            { id: 3, boardCategory : 0, boardTitle: "공지 글 3", nickname: "사용자2", createAt: "2024-02-07" },
+            { id: 4, boardCategory : 0, boardTitle: "공지 글 4", nickname: "사용자3", createAt: "2024-02-06" },
+            { id: 5, boardCategory : 0, boardTitle: "공지 글 5", nickname: "관리자", createAt: "2024-02-05" },
+            { id: 6, boardCategory : 0, boardTitle: "공지 글 6", nickname: "사용자4", createAt: "2024-02-04" },
+            { id: 7, boardCategory : 0, boardTitle: "공지 글 1", nickname: "관리자", createAt: "2024-02-09" },
+            { id: 8, boardCategory : 0, boardTitle: "공지 글 2", nickname: "사용자1", createAt: "2024-02-08" },
+            { id: 9, boardCategory : 0, boardTitle: "공지 글 3", nickname: "사용자2", createAt: "2024-02-07" },
+            { id: 10, boardCategory : 0, boardTitle: "공지 글 4", nickname: "사용자3", createAt: "2024-02-06" },
+            { id: 11, boardCategory : 0, boardTitle: "공지 글 5", nickname: "관리자", createAt: "2024-02-05" },
+            { id: 12, boardCategory : 0, boardTitle: "공지 글 6", nickname: "사용자4", createAt: "2024-02-04" },
+            { id: 13, boardCategory : 0, boardTitle: "공지 글 1", nickname: "관리자", createAt: "2024-02-09" },
+            { id: 14, boardCategory : 0, boardTitle: "공지 글 2", nickname: "사용자1", createAt: "2024-02-08" },
+            { id: 15, boardCategory : 0, boardTitle: "공지 글 3", nickname: "사용자2", createAt: "2024-02-07" },
+            { id: 16, boardCategory : 0, boardTitle: "공지 글 4", nickname: "사용자3", createAt: "2024-02-06" },
+            { id: 17, boardCategory : 0, boardTitle: "공지 글 5", nickname: "관리자", createAt: "2024-02-05" },
+            { id: 18, boardCategory : 0, boardTitle: "공지 글 6", nickname: "사용자4", createAt: "2024-02-04" },
         ]);
     //const [notices, setNotices] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +41,7 @@ function Notices() {
     //     try {
     //         setLoading(true);
     //         const response = await getAllBoards();
-    //         const filteredNotices = response.filter(board => board.category === 0);
+    //         const filteredNotices = response.filter(board => board.boardCategory  === 0);
     //         setNotices(filteredNotices);
     //     } catch (error) {
     //         setError("공지사항을 불러오는데 실패했습니다.");
@@ -57,7 +57,7 @@ function Notices() {
 
     // 검색 필터링
     const filteredNotices = notices.filter((notice) =>
-        notice.title.toLowerCase().includes(searchTerm.toLowerCase())
+        notice.boardTitle.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     // 페이지네이션 처리
@@ -100,6 +100,7 @@ function Notices() {
                     <WriteComponent 
                     postToEdit={selectedBoard} 
                     fetchBoards={() => {}} 
+                    //fetchBoards={fetchNotices} 
                     onCancel={() => setSelectedBoard(null)}
                     />
                 </div>

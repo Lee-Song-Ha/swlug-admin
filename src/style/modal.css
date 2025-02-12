@@ -13,40 +13,61 @@
     z-index: 1000;
 }
 
-/* 모달 헤더 */
-.modal-header {
+/* 입력 그룹 (레이블 + 입력창) */
+.input-group {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/* 모달 제목 */
-.modal-title {
-    font-size: 18px;
+/* 레이블 스타일 */
+.input-label {
+    width: 80px;
+    font-size: 14px;
+    color: #555;
+    text-align: right;
 }
 
 /* 모달 콘텐츠 스타일 */
 .modal-content {
     background-color: #fff;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* 헤더 배경을 포함하기 위해 설정 */
 }
 
-.modal-content h2 {
-    margin: 0;
+/* 모달 헤더 (배경 확장) */
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: #c9c9c9;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: calc(100% + 40px);
+    /* 모달보다 넓게 확장 */
+    margin: -20px -20px 0 -20px;
+    /* 상단 여백 제거 */
+}
+
+/* 모달 제목 */
+.modal-title {
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 /* 입력 필드 스타일 */
 .modal-input {
     width: 95%;
     padding: 10px;
-    margin-top: 15px;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     transition: border-color 0.2s;
     font-size: 14px;
@@ -58,6 +79,35 @@
     outline: none;
 }
 
+/* 비밀번호 입력창 컨테이너 */
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    /* 다른 입력 필드와 동일한 너비 */
+}
+
+/* 비밀번호 입력창 */
+.password-container .modal-input {
+    width: 100%;
+    /* 다른 입력 필드와 동일한 너비 */
+    padding-right: 35px;
+    /* 아이콘 공간 확보 */
+}
+
+/* 비밀번호 토글 아이콘 */
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    /* 세로 정렬 조정 */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+
+/* 버튼 컨테이너 */
 .modal-buttons {
     display: flex;
     justify-content: flex-end;
@@ -65,28 +115,31 @@
     gap: 10px;
 }
 
+/* 버튼 스타일 */
 .modal-button {
     margin-top: 20px;
     padding: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
+/* 취소 버튼 */
 .modal-cancel {
-    background: #f1f3f5;
-    color: #333;
+    color: #c9c9c9;
 }
 
 .modal-cancel:hover {
-    background: #e0e0e0;
+    background: #c9c9c9;
+    color: #fff;
 }
 
+/* 확인 버튼 */
 .modal-accept {
-    background: #007bff;
+    background: #c9c9c9;
     color: white;
 }
 
 .modal-accept:hover {
-    background: #0056b3;
+    background: #ddd;
 }
